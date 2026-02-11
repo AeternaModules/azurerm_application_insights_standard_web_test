@@ -41,30 +41,30 @@ EOT
     resource_group_name     = string
     description             = optional(string)
     enabled                 = optional(bool)
-    frequency               = optional(number, 300)
+    frequency               = optional(number) # Default: 300
     retry_enabled           = optional(bool)
     tags                    = optional(map(string))
-    timeout                 = optional(number, 30)
+    timeout                 = optional(number) # Default: 30
     request = object({
       body                     = optional(string)
-      follow_redirects_enabled = optional(bool, true)
+      follow_redirects_enabled = optional(bool) # Default: true
       header = optional(object({
         name  = string
         value = string
       }))
-      http_verb                        = optional(string, "GET")
-      parse_dependent_requests_enabled = optional(bool, true)
+      http_verb                        = optional(string) # Default: "GET"
+      parse_dependent_requests_enabled = optional(bool)   # Default: true
       url                              = string
     })
     validation_rules = optional(object({
       content = optional(object({
         content_match      = string
-        ignore_case        = optional(bool, false)
-        pass_if_text_found = optional(bool, false)
+        ignore_case        = optional(bool) # Default: false
+        pass_if_text_found = optional(bool) # Default: false
       }))
-      expected_status_code        = optional(number, 200)
+      expected_status_code        = optional(number) # Default: 200
       ssl_cert_remaining_lifetime = optional(number)
-      ssl_check_enabled           = optional(bool, false)
+      ssl_check_enabled           = optional(bool) # Default: false
     }))
   }))
 }
