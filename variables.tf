@@ -48,10 +48,10 @@ EOT
     request = object({
       body                     = optional(string)
       follow_redirects_enabled = optional(bool) # Default: true
-      header = optional(object({
+      header = optional(list(object({
         name  = string
         value = string
-      }))
+      })))
       http_verb                        = optional(string) # Default: "GET"
       parse_dependent_requests_enabled = optional(bool)   # Default: true
       url                              = string

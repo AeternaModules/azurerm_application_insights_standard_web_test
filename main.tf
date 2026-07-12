@@ -17,7 +17,7 @@ resource "azurerm_application_insights_standard_web_test" "application_insights_
     body                     = each.value.request.body
     follow_redirects_enabled = each.value.request.follow_redirects_enabled
     dynamic "header" {
-      for_each = each.value.request.header != null ? [each.value.request.header] : []
+      for_each = each.value.request.header != null ? each.value.request.header : []
       content {
         name  = header.value.name
         value = header.value.value
