@@ -1,3 +1,7 @@
+output "application_insights_standard_web_tests_id" {
+  description = "Map of id values across all application_insights_standard_web_tests, keyed the same as var.application_insights_standard_web_tests"
+  value       = { for k, v in azurerm_application_insights_standard_web_test.application_insights_standard_web_tests : k => v.id }
+}
 output "application_insights_standard_web_tests_application_insights_id" {
   description = "Map of application_insights_id values across all application_insights_standard_web_tests, keyed the same as var.application_insights_standard_web_tests"
   value       = { for k, v in azurerm_application_insights_standard_web_test.application_insights_standard_web_tests : k => v.application_insights_id }
